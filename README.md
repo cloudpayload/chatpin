@@ -12,6 +12,19 @@ Version 0.1.0 is an initial working release, not an independently audited securi
 product. It does not claim to be the first tool in this space or to detect every
 malicious template.
 
+## Home-lab validation
+
+A [maintainer-reported lab run](docs/lab-validation.md) scanned real
+Llama-3.2-3B-Instruct and Qwen2.5-3B-Instruct Q4_K_M GGUF files on a Dell
+PowerEdge R710 without AVX, using Python 3.11. Qwen template extraction,
+reviewed locking, and an unchanged-baseline check succeeded; the seven-step
+synthetic demo also passed.
+
+**Validation is partial:** rejection of a modified real-model template and
+live serving with an exported pin were not completed. Both models produced
+CP001 review findings, which are not vulnerability verdicts. The report
+documents evidence limits and follow-up steps.
+
 ## Install
 
 Python 3.10 or newer. Clone this repository, then install locally:
