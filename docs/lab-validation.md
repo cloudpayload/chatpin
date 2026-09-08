@@ -17,11 +17,50 @@ This page is an edited summary of the maintainer-supplied
 not an independent rerun or security audit. Technical interpretations were
 checked against the tested Chatpin source.
 
-No screenshots, complete terminal logs, lockfiles, or extracted model templates
-were supplied with the report. Model hashes were abbreviated, and exact
-download repositories and immutable revisions were not recorded. These limits
-prevent independent identification and byte-for-byte reproduction of the model
-artifacts from this page alone.
+The maintainer subsequently supplied terminal screenshots. Three relevant,
+unaltered screenshots are included below: synthetic drift rejection, both
+real-model scan results, and the Qwen baseline check. They corroborate the
+displayed output but do not constitute an independent rerun.
+
+Complete terminal logs, lockfile artifacts, and machine-readable extracted
+templates are not included. Full template hashes are visible in the screenshots;
+GGUF file hashes remain abbreviated, and exact download repositories and
+immutable revisions were not recorded. These limits prevent independent
+identification and byte-for-byte reproduction of the model artifacts from this
+page alone.
+
+## Screenshot evidence
+
+Click an image to inspect the original at full resolution. These are unaltered
+screenshots supplied by the maintainer.
+
+### Controlled demo: identify the change and reject drift
+
+![Synthetic demo showing the conditional instruction diff, CP001, baseline MATCH, modified-template DRIFT, and successful export](images/synthetic-drift-demo.png)
+
+The fixture diff shows the harmless `violet lantern` trigger. The original
+matches its lock; the modified fixture returns `DRIFT` with expected exit 1.
+The final line reports that all seven demo steps passed and exported content
+matched the reviewed template. This is synthetic-fixture evidence, not a
+real-model attack or real-model drift test.
+
+### Real GGUF scans: Qwen and Llama
+
+![Qwen and Llama GGUF scan output with full template hashes, byte counts, and CP001 review findings](images/real-model-scans.png)
+
+Both real-model scan outputs are visible: Qwen reports 2,507 template bytes and
+CP001 at line 26; Llama reports 3,827 bytes and CP001 at line 83. These are
+review findings, not vulnerability verdicts. The displayed hashes identify
+extracted template content, not whole GGUF files.
+
+### Qwen: reviewed lock and unchanged-baseline acceptance
+
+![Qwen lock command followed by MATCH, identical expected and actual template hashes, and exit code zero](images/qwen-baseline-check.png)
+
+The screenshot shows `LOCKED`, followed by `MATCH` and exit code 0. The later
+`PASS - starting server` line is printed by `echo`; it does not demonstrate a
+server launch. The copied template was not changed, and the gate checks the
+original GGUF, so this is positive-baseline evidence only.
 
 ## Environment
 

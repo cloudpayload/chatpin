@@ -25,6 +25,16 @@ live serving with an exported pin were not completed. Both models produced
 CP001 review findings, which are not vulnerability verdicts. The report
 documents evidence limits and follow-up steps.
 
+## Lab screenshots
+
+![Qwen GGUF reviewed baseline with matching hashes and exit code zero](docs/images/qwen-baseline-check.png)
+
+**Real-model baseline acceptance:** Qwen's extracted template was locked and the
+unchanged GGUF returned `MATCH`, exit 0. The “starting server” text is an echoed
+message, not proof of a live server launch.
+
+[View the synthetic drift demo, both real-model scans, and evidence captions](docs/lab-validation.md#screenshot-evidence).
+
 ## Install
 
 Python 3.10 or newer. Clone this repository, then install locally:
