@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "chatpin"
+version = "0.1.0"
+description = "Review, compare, and pin LLM chat templates before deployment"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+dependencies = ["Jinja2>=3.1.6,<4"]
+
+[project.optional-dependencies]
+hub = ["huggingface-hub>=0.27,<2"]
+dev = ["pytest>=8,<10", "build>=1,<2"]
+
+[project.scripts]
+chatpin = "chatpin.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

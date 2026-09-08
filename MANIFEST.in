@@ -1,0 +1,4 @@
+include LICENSE README.md CONTRIBUTING.md SECURITY.md
+recursive-include examples *.py *.jinja
+recursive-include tests *.py
+include .github/workflows/test.yml
